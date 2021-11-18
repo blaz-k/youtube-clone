@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="content">
+    <router-link to="/">Home</router-link>
+    <router-link to="/guide">Guide</router-link>
+  </div>
+  <router-view v-slot="{ Component, route }">
+    <transition
+      :enter-active-class="route.meta.enterClass"
+      :leave-active-class="route.meta.leaveClass"
+    >
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
@@ -22,5 +28,38 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.content {
+  width: 40%;
+  min-width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 30px;
+}
+
+a {
+  font: bold;
+  color: #2c3e50;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+a:hover,
+a.router-link-active {
+  border-bottom: 2px solid #3498db;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 </style>
