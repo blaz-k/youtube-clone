@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../components/Home.vue"
-import Guide from "../components/Guide.vue"
+import Video from "../components/Video.vue"
 
 const router = createRouter({
     history: createWebHistory(),
@@ -8,19 +8,10 @@ const router = createRouter({
         {
             path: "/",
             component: Home,
-            meta: {
-                enterClass: "animate__animated animate__fadeInLeft",
-                leaveClasss: "animate__animated animate__fadeOutRight",
-
-            }
         },
         {
-            path: "/guide",
-            component: Guide,
-            meta: {
-                enterClass: "animate__animated animate__fadeInRight",
-                leaveClasss: "animate__animated animate__fadeOutLeft",
-            }
+            path: "/video",
+            component: Video,
         },
     ],
 })
