@@ -3,7 +3,7 @@
     class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"
-      >Company name</a
+      >YouTubeClone</a
     >
     <button
       class="navbar-toggler position-absolute d-md-none collapsed"
@@ -40,37 +40,49 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
                 <span data-feather="home"></span>
-                Dashboard
+                Home
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file"></span>
-                Orders
+                Explore
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="shopping-cart"></span>
-                Products
+                Subscriptions
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="users"></span>
-                Customers
+                Library
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="bar-chart-2"></span>
-                Reports
+                History
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="layers"></span>
-                Integrations
+                Your Videos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                Watch Later
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                Liked Videos
               </a>
             </li>
           </ul>
@@ -87,7 +99,7 @@
               text-muted
             "
           >
-            <span>Saved reports</span>
+            <span>Subscriptions</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
@@ -96,25 +108,19 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file-text"></span>
-                Current month
+                Blaž Kmetič
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file-text"></span>
-                Last quarter
+                Someone Else
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file-text"></span>
-                Social engagement
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Year-end sale
+                And Someone Else
               </a>
             </li>
           </ul>
@@ -303,7 +309,7 @@ export default {
         "uXjLfSFkqTs",
         "6oo323AQ0JI",
         "kft2AkvKhWU",
-        "R25B5A",
+        "TNzgUCU5TVs",
         "HHs1ftjayUw",
         "pbImvaiXGFU",
         "BZGQ8Z1Jyyw",
