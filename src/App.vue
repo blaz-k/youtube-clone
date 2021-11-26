@@ -1,8 +1,14 @@
 <template>
-  <div class="content">
-    <router-link to="/">Home</router-link>
-    <router-link to="/video">Video</router-link>
-  </div>
+  <div class="content"></div>
+  <router-link to="/" class="nav-link active" aria-current="page"
+    >Home</router-link
+  >
+  <router-link to="/video" class="nav-link active" aria-current="page"
+    >vidoe</router-link
+  >
+  <router-link to="/" class="nav-link active" aria-current="page"
+    >Poiskus</router-link
+  >
   <router-view> </router-view>
 </template>
 
@@ -20,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
