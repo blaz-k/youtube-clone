@@ -13,12 +13,11 @@ export default {
   props: ["video"],
   created() {
     this.getData();
-    console.log("this data :" + this.getData());
   },
   data() {
     return {
       api_key: "AIzaSyCrq46vpCpa50Z4t-GQ_GNuqZHIeyZWg14",
-      url: "https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=",
+      url: "https://www.googleapis.com/youtube/v3/videos?id=",
       second_url: "&part=snippet,contentDetails,statistics,status",
       complete_address: null,
     };
@@ -26,10 +25,10 @@ export default {
   methods: {
     async getData() {
       let response = await axios.get(
-        `${this.url}${this.api_key}${this.second_url}`
+        `${this.url}${this.video}&key=${this.api_key}${this.second_url}`
       );
       this.complete_address = response.data;
-      console.log("HElou");
+      console.log("This.complete address: ");
       console.log(this.complete_address);
     },
   },
