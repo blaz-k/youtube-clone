@@ -1,14 +1,5 @@
 <template>
   <div class="content"></div>
-  <router-link to="/" class="nav-link active" aria-current="page"
-    >Home</router-link
-  >
-  <router-link to="/video" class="nav-link active" aria-current="page"
-    >vidoe</router-link
-  >
-  <router-link to="/" class="nav-link active" aria-current="page"
-    >Poiskus</router-link
-  >
   <router-view> </router-view>
 </template>
 

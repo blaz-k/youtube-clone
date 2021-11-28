@@ -1,5 +1,4 @@
 <template>
-  <!--
   <header
     class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
@@ -45,7 +44,7 @@
             </li>
 
             <li class="nav-item">
-              <router-link to="/video" class="nav-link">Video</router-link>
+              <router-link to="/" class="nav-link">Video</router-link>
             </li>
 
             <li class="nav-item">
@@ -161,21 +160,22 @@
             </button>
           </div>
         </div>
+        <div :key="video" v-for="video in videoId">
+          <VideoShow :video="video" />
+        </div>
 
+        <!--If needed later:
         <canvas
           class="my-4 w-100"
           id="myChart"
           width="900"
           height="380"
         ></canvas>
-        --->
+        -->
 
-  <!--- Second content --->
-  <!---
+        <!--- Second content --->
+
         <h2>Section title</h2>
-        <div :key="video" v-for="video in videoId">
-          <VideoShow :video="video" />
-        </div>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
@@ -205,12 +205,6 @@
         </div>
       </main>
     </div>
-  </div>
-  --->
-  <div>helo</div>
-
-  <div :key="video" v-for="video in videoId">
-    <VideoShow :video="video" />
   </div>
 </template>
 
