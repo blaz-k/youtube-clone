@@ -1,23 +1,20 @@
 <template>
   <div v-if="complete_address">
-    <h1>Video:</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100">
-          <img src="#" class="card-img-top" alt="..." />
-          {{ complete_address.items[0].snippet.thumbnails.high.url }}
-          <div class="card-body">
-            <h5 class="card-title">
-              {{ complete_address.items[0].snippet.title }}
-            </h5>
-            <p class="card-text"></p>
-            <p class="card-text">
-              <small class="text-muted"
-                >{{ complete_address.items[0].statistics.viewCount }} Views .
-                {{ complete_address.items[0].snippet.publishedAt }}</small
-              >
-            </p>
-          </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src="#" class="card-img-top" alt="..." />
+        {{ complete_address.items[0].snippet.thumbnails.high.url }}
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ complete_address.items[0].snippet.title }}
+          </h5>
+          <p class="card-text"></p>
+          <p class="card-text">
+            <small class="text-muted"
+              >{{ complete_address.items[0].statistics.viewCount }} Views .
+              {{ complete_address.items[0].snippet.publishedAt }}</small
+            >
+          </p>
         </div>
       </div>
     </div>

@@ -160,8 +160,10 @@
             </button>
           </div>
         </div>
-        <div :key="video" v-for="video in videoId">
-          <VideoShow :video="video" />
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div :key="video" v-for="video in videoId">
+            <VideoShow :video="video" />
+          </div>
         </div>
 
         <!--If needed later:
