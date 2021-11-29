@@ -3,7 +3,7 @@
     <div class="col">
       <div class="card h-100">
         <img src="#" class="card-img-top" alt="..." />
-        {{ complete_address.items[0].snippet.thumbnails.high.url }}
+        {{ complete_address.items[0].snippet.thumbnails.default.url }}
         <div class="card-body">
           <h5 class="card-title">
             {{ complete_address.items[0].snippet.title }}
@@ -12,7 +12,7 @@
           <p class="card-text">
             <small class="text-muted"
               >{{ complete_address.items[0].statistics.viewCount }} Views .
-              {{ complete_address.items[0].snippet.publishedAt }}</small
+              {{ newDate }}</small
             >
           </p>
         </div>
@@ -23,10 +23,18 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+
 //URL: https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=APIKEY&part=snippet,contentDetails,statistics,status
 export default {
   name: "VideoShow",
   props: ["video"],
+  computed: {
+    newDate() {
+      let date = new Date(this.complete_address.items[0].snippet.publishedAt);
+      return moment(date).format("DD/MM/YYYY");
+    },
+  },
   created() {
     this.getData();
   },
