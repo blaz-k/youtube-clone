@@ -100,7 +100,7 @@
               text-muted
             "
           >
-            <span>Subscriptions</span>
+            <span class="homeSpan">Subscriptions</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
@@ -160,7 +160,7 @@
             </button>
           </div>
         </div>
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-lg-4 g-4">
           <div :key="videoId" v-for="videoId in videoIds">
             <VideoShow :video="videoId" />
           </div>
@@ -196,7 +196,7 @@ export default {
         "TNzgUCU5TVs",
         "HHs1ftjayUw",
         "pbImvaiXGFU",
-        "BZGQ8Z1Jyyw",
+        "LrNkecdU6mI",
         "VXKBaVGWSk0",
         "MHpHPj-DosY",
         "NM71cqoNt3w",
@@ -308,5 +308,10 @@ body {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.homeSpan {
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

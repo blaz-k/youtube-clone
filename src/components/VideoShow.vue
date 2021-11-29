@@ -3,7 +3,7 @@
     <div class="col">
       <div class="card h-100">
         <img
-          :src="complete_address.items[0].snippet.thumbnails.high.url"
+          :src="complete_address.items[0].snippet.thumbnails.maxres.url"
           class="card-img-top"
           alt="..."
         />
