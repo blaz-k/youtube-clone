@@ -161,8 +161,8 @@
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-4 g-4">
-          <div :key="video" v-for="video in videoId">
-            <VideoShow :video="video" />
+          <div :key="videoId" v-for="videoId in videoIds">
+            <VideoShow :video="videoId" />
           </div>
         </div>
 
@@ -189,7 +189,7 @@ export default {
   },
   data() {
     return {
-      videoId: [
+      videoIds: [
         "uXjLfSFkqTs",
         "6oo323AQ0JI",
         "kft2AkvKhWU",

@@ -1,9 +1,12 @@
 <template>
-  <div v-if="complete_address">
+  <div v-if="complete_address" @click="videoShowDetails">
     <div class="col">
       <div class="card h-100">
-        <img src="#" class="card-img-top" alt="..." />
-        {{ complete_address.items[0].snippet.thumbnails.default.url }}
+        <img
+          :src="complete_address.items[0].snippet.thumbnails.maxres.url"
+          class="card-img-top"
+          alt="..."
+        />
         <div class="card-body">
           <h5 class="card-title">
             {{ complete_address.items[0].snippet.title }}
@@ -52,8 +55,16 @@ export default {
         `${this.url}${this.video}&key=${this.api_key}${this.second_url}`
       );
       this.complete_address = response.data;
-      console.log("This.complete address: ");
       console.log(this.complete_address);
+    },
+    videoShowDetails() {
+      console.log(this.video);
+      this.$router.push({
+        name: "VideoDetails",
+        params: {
+          vId: this.video,
+        },
+      });
     },
   },
 };
