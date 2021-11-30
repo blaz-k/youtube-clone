@@ -164,11 +164,14 @@
           <div class="row">
             <div class="col-sm-8">
               <div class="card">
-                <img
-                  :src="videoDetails.items[0].snippet.thumbnails.maxres.url"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <iframe
+                  height="315"
+                  :src="this.embededSrc + this.vId"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
                 <div class="card-body">
                   <h5 class="card-title">
                     {{ videoDetails.items[0].snippet.title }}
@@ -188,6 +191,7 @@
                   <div class="row g-0">
                     <div class="col-md-6">
                       <!----------------  col md-6, md-6 or maybe md-4, md-8 ---------------->
+
                       <video
                         :src="
                           videoDetails.items[0].snippet.thumbnails.maxres.url
@@ -241,6 +245,7 @@ export default {
       second_url: "&part=snippet,contentDetails,statistics,status",
       videoDetails: null,
       sideVideos: null,
+      embededSrc: "https://www.youtube.com/embed/",
     };
   },
   methods: {
