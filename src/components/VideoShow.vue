@@ -1,5 +1,5 @@
 <template>
-  <div v-if="complete_address" @click="videoShowDetails">
+  <div v-if="complete_address" @click="videoShowDetails" id="videoShow">
     <div class="col">
       <div class="card h-100">
         <img
@@ -70,4 +70,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#videoShow .card-title {
+  font-size: 15px;
+}
+</style>

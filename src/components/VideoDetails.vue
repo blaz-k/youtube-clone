@@ -100,7 +100,7 @@
               text-muted
             "
           >
-            <span>Subscriptions</span>
+            <span class="homeSpan">Subscriptions</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
@@ -163,10 +163,10 @@
         <div v-if="videoDetails" id="videoDetails">
           <div class="row">
             <div class="col-sm-8">
-              <div class="card">
+              <div class="card border-dark">
                 <iframe
                   width="100%"
-                  height="260rem"
+                  height="350rem"
                   :src="this.embededSrc + this.vId"
                   title="YouTube video player"
                   frameborder="0"
@@ -182,11 +182,25 @@
                     {{
                       videoDetails.items[0].snippet.description.substring(
                         0,
-                        100
+                        200
                       )
                     }}
                   </p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <div class="card-text details">
+                    <p>
+                      {{ videoDetails.items[0].statistics.viewCount }} Views
+                    </p>
+
+                    <small class="text-muted"
+                      ><i class="far fa-thumbs-up"
+                        >{{ videoDetails.items[0].statistics.likeCount }}
+                      </i>
+
+                      <i class="fas fa-thumbs-down">
+                        {{ videoDetails.items[0].statistics.dislikeCount }}
+                      </i>
+                    </small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -277,20 +291,21 @@ export default {
   font-size: 12px;
 }
 
-/*  CHECK WHEN DOING MEDIA SIZES
-#videosRight .card-body {
-  margin-top: -15px;
-  padding-bottom: 0;
-}
-
-#videosRight .card-text {
-  margin-bottom: 0;
-  padding: 0;
-}
-*/
-
 .prvi {
   display: flex;
   align-items: center;
+}
+
+.row {
+  border: none;
+}
+
+#videoDetails .fas {
+  margin-left: 2vh;
+}
+
+#videoDetails .details {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
