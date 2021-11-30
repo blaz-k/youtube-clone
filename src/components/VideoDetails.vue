@@ -160,61 +160,68 @@
             </button>
           </div>
         </div>
-        <div v-if="videoDetails">
+        <div v-if="videoDetails" id="videoDetails">
           <div class="row">
             <div class="col-sm-8">
               <div class="card">
                 <iframe
-                  height="315"
+                  width="100%"
+                  height="260rem"
                   :src="this.embededSrc + this.vId"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
+
                 <div class="card-body">
                   <h5 class="card-title">
                     {{ videoDetails.items[0].snippet.title }}
                   </h5>
                   <p class="card-text">
-                    With supporting text below as a natural lead-in to
-                    additional content.
+                    {{
+                      videoDetails.items[0].snippet.description.substring(
+                        0,
+                        100
+                      )
+                    }}
                   </p>
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="videosRight">
               <div class="row">
                 <div class="card mb-3" style="">
                   <div class="row g-0">
-                    <div class="col-md-6">
+                    <div class="col-sm-4 prvi">
                       <!----------------  col md-6, md-6 or maybe md-4, md-8 ---------------->
-
-                      <video
-                        :src="
-                          videoDetails.items[0].snippet.thumbnails.maxres.url
-                        "
-                      >
-                        video
-                      </video>
-                      <img
-                        :src="
-                          videoDetails.items[0].snippet.thumbnails.maxres.url
-                        "
-                        class="img-fluid rounded-start"
-                        alt="..."
-                      />
+                      <iframe
+                        class="img-fluid"
+                        :src="this.embededSrc + this.vId"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-8">
                       <div class="card-body">
-                        <h5 class="card-title">Title(smaller)</h5>
+                        <h5 class="card-title">
+                          {{ videoDetails.items[0].snippet.title }}
+                        </h5>
                         <p class="card-text">
-                          Need to make smaller letters to fill in cards
+                          {{
+                            videoDetails.items[0].snippet.description.substring(
+                              0,
+                              60
+                            )
+                          }}
+                          /
                         </p>
-                        <p class="card-text">
-                          <small class="text-muted">Smallers as wel</small>
+                        <p>
+                          {{ videoDetails.items[0].statistics.viewCount }} Views
                         </p>
                       </div>
                     </div>
@@ -262,7 +269,28 @@ export default {
 </script>
 
 <style>
-p {
-  font-size: 8px;
+#videosRight p {
+  font-size: 10px;
+}
+
+#videosRight h5 {
+  font-size: 12px;
+}
+
+/*  CHECK WHEN DOING MEDIA SIZES
+#videosRight .card-body {
+  margin-top: -15px;
+  padding-bottom: 0;
+}
+
+#videosRight .card-text {
+  margin-bottom: 0;
+  padding: 0;
+}
+*/
+
+.prvi {
+  display: flex;
+  align-items: center;
 }
 </style>
