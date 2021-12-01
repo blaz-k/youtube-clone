@@ -252,6 +252,7 @@
 
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   name: "VideoDetails",
@@ -268,6 +269,9 @@ export default {
       sideVideos: null,
       embededSrc: "https://www.youtube.com/embed/",
     };
+  },
+  computed: {
+    ...mapState(["allIds"]),
   },
   methods: {
     async oneVideo() {
