@@ -204,13 +204,14 @@
                 </div>
               </div>
             </div>
-
             <div class="col-sm-4" id="videosRight">
               <div class="row">
+                <VideoSidebar />
+                <!--
+
                 <div class="card mb-3" style="">
                   <div class="row g-0">
                     <div class="col-sm-4 prvi">
-                      <!----------------  col md-6, md-6 or maybe md-4, md-8 ---------------->
                       <iframe
                         class="img-fluid"
                         :src="this.embededSrc + this.vId"
@@ -240,7 +241,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -253,12 +254,19 @@
 <script>
 import axios from "axios";
 import { mapState } from "vuex";
+import VideoSidebar from "./VideoSidebar.vue";
 
 export default {
   name: "VideoDetails",
   props: ["vId"],
   created() {
     this.oneVideo();
+  },
+  computed: {
+    ...mapState(["allIds"]),
+  },
+  components: {
+    VideoSidebar,
   },
   data() {
     return {
@@ -270,9 +278,7 @@ export default {
       embededSrc: "https://www.youtube.com/embed/",
     };
   },
-  computed: {
-    ...mapState(["allIds"]),
-  },
+
   methods: {
     async oneVideo() {
       let response = await axios.get(

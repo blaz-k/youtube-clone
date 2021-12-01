@@ -160,23 +160,12 @@
             </button>
           </div>
         </div>
-        <div>
-          <VideoSidebar />
-        </div>
+
         <div class="row row-cols-1 row-cols-lg-4 g-4">
           <div :key="videoId" v-for="videoId in videoIds">
             <VideoShow :video="videoId" />
           </div>
         </div>
-
-        <!--If needed later:
-        <canvas
-          class="my-4 w-100"
-          id="myChart"
-          width="900"
-          height="380"
-        ></canvas>
-        -->
       </main>
     </div>
   </div>
@@ -184,13 +173,11 @@
 
 <script>
 import VideoShow from "./VideoShow.vue";
-import VideoSidebar from "./VideoSidebar.vue";
 
 export default {
   name: "Home",
   components: {
     VideoShow,
-    VideoSidebar,
   },
   data() {
     return {
