@@ -160,10 +160,90 @@
             </button>
           </div>
         </div>
+        <div v-if="videoDetails" id="videoDetails">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="card border-dark">
+                <iframe
+                  width="100%"
+                  height="350rem"
+                  :src="this.embededSrc + this.vId"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
 
-        <div class="row row-cols-1 row-cols-lg-4 g-4">
-          <div :key="videoId" v-for="videoId in videoIds">
-            <VideoShow :video="videoId" />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ videoDetails.items[0].snippet.title }}
+                  </h5>
+                  <p class="card-text">
+                    {{
+                      videoDetails.items[0].snippet.description.substring(
+                        0,
+                        200
+                      )
+                    }}
+                  </p>
+                  <div class="card-text details">
+                    <p>
+                      {{ videoDetails.items[0].statistics.viewCount }} Views
+                    </p>
+
+                    <small class="text-muted"
+                      ><i class="far fa-thumbs-up"
+                        >{{ videoDetails.items[0].statistics.likeCount }}
+                      </i>
+
+                      <i class="fas fa-thumbs-down">
+                        {{ videoDetails.items[0].statistics.dislikeCount }}
+                      </i>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4" id="videosRight">
+              <div class="row">
+                <VideoSidebar />
+                <!--
+
+                <div class="card mb-3" style="">
+                  <div class="row g-0">
+                    <div class="col-sm-4 prvi">
+                      <iframe
+                        class="img-fluid"
+                        :src="this.embededSrc + this.vId"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          {{ videoDetails.items[0].snippet.title }}
+                        </h5>
+                        <p class="card-text">
+                          {{
+                            videoDetails.items[0].snippet.description.substring(
+                              0,
+                              60
+                            )
+                          }}
+                          /
+                        </p>
+                        <p>
+                          {{ videoDetails.items[0].statistics.viewCount }} Views
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -172,138 +252,70 @@
 </template>
 
 <script>
-import VideoShow from "./VideoShow.vue";
+import axios from "axios";
+import { mapState } from "vuex";
+import VideoSidebar from "../components/VideoSidebar.vue";
 
 export default {
-  name: "Home",
+  name: "VideoDetails",
+  props: ["vId"],
+  created() {
+    this.oneVideo();
+  },
+  computed: {
+    ...mapState(["allIds"]),
+  },
   components: {
-    VideoShow,
+    VideoSidebar,
   },
   data() {
     return {
-      videoIds: [
-        "uXjLfSFkqTs",
-        "6oo323AQ0JI",
-        "kft2AkvKhWU",
-        "TNzgUCU5TVs",
-        "HHs1ftjayUw",
-        "pbImvaiXGFU",
-        "LrNkecdU6mI",
-        "VXKBaVGWSk0",
-        "MHpHPj-DosY",
-        "NM71cqoNt3w",
-        "DPBXxrhJIv4",
-        "9wKivv-vvhU",
-      ],
+      api_key: "AIzaSyCrq46vpCpa50Z4t-GQ_GNuqZHIeyZWg14",
+      url: "https://www.googleapis.com/youtube/v3/videos?id=",
+      second_url: "&part=snippet,contentDetails,statistics,status",
+      videoDetails: null,
+      sideVideos: null,
+      embededSrc: "https://www.youtube.com/embed/",
     };
+  },
+
+  methods: {
+    async oneVideo() {
+      let response = await axios.get(
+        `${this.url}${this.vId}&key=${this.api_key}${this.second_url}`
+      );
+      this.videoDetails = response.data;
+      console.log("video details:");
+      console.log(this.videoDetails);
+    },
   },
 };
 </script>
 
 <style>
-body {
-  font-size: 0.875rem;
+#videosRight p {
+  font-size: 10px;
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+#videosRight h5 {
+  font-size: 12px;
 }
 
-/*
- * Sidebar
- */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  /* rtl:raw:
-  right: 0;
-  */
-  bottom: 0;
-  /* rtl:remove */
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+.prvi {
+  display: flex;
+  align-items: center;
 }
 
-@media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
+.row {
+  border: none;
 }
 
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+#videoDetails .fas {
+  margin-left: 2vh;
 }
 
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #727272;
-}
-
-.sidebar .nav-link.active {
-  color: #2470dc;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Navbar
- */
-
-.navbar-brand {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
-}
-
-.navbar .navbar-toggler {
-  top: 0.25rem;
-  right: 1rem;
-}
-
-.navbar .form-control {
-  padding: 0.75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
-}
-
-.homeSpan {
-  margin-left: auto;
-  margin-right: auto;
+#videoDetails .details {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

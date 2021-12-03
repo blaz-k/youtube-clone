@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
-import VideoDetails from "../components/VideoDetails.vue";
+import Home from "../pages/Home.vue";
+import VideoDetails from "../pages/VideoDetails.vue";
 
 const router = createRouter({
   history: createWebHistory(),
